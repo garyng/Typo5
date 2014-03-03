@@ -64,7 +64,7 @@
 		}
 
 		p {
-			font-family: Helvetica, sans-serif;
+			font-family: monospace;
 			font-weight: 600;
 			font-size: 14px;
 			color: white;
@@ -115,7 +115,7 @@
 				<h1><span id="month"></span></h1>
 			</div>
 			<div class="small-text">
-				<p><span id="year"></span></p>
+				<p><span id="literal-day"></span><span id="year"></span></p>
 			</div>
 		</div>
 	</div>
@@ -183,6 +183,7 @@
 			var days = new Array("sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday");
 			var currentTime = new Date();
 			var day = currentTime.getDate().toString();
+            var monthint = currentTime.getMonth() + 1;
 			var month = months[currentTime.getMonth()];
 			var year = currentTime.getFullYear().toString();
 			var literalDay = days[currentTime.getDay()];
@@ -207,8 +208,8 @@
 
 			document.getElementById("month").innerText = month;
 			document.getElementById("month-text").innerText = "{0}{1}".format(day, ending);
-			document.getElementById("year").innerText = year;
-			//document.getElementById("literal-day").innerText = literalDay;
+			document.getElementById("year").innerText = " {0}/{1}/{2}".format(day,monthint,year);
+			document.getElementById("literal-day").innerText = "{0},".format(literalDay);
 		}
 
 		//if you've found this on another repo than http://patrickmuff.ch/repo/ then it was stolen by some idiots who don't even bother reading the code they steal.	
