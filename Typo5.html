@@ -97,13 +97,13 @@
 				<p>Guess what, it's</p>
 			</div>
 			<div class="big-text">
-				<h1><span id="time"></span><span id="seconds"></span><span id="millisec"></span><span id="am-pm"></span></h1>
+				<h1 id="time-container"><span id="time"></span><span id="seconds"></span><span id="millisec"></span><span id="am"></span><span id="pm"></span></h1>
 			</div>
 			<div class="small-text">
 				<p>on the</p>
 			</div>
 			<div class="big-text">
-				<h1><span id="month-text"></span></h1>
+				<h1><span id="month-text"></span><span id="month-end"></span></h1>
 			</div>
 			<div class="small-text">
 				<p>of</p>
@@ -159,7 +159,8 @@
 			var hours = currentTime.getHours();
 			var minutes = currentTime.getMinutes();
             var seconds = currentTime.getSeconds();
-			var ampm = (hours >= 12) ? "pm" : "am";
+//			var ampm = (hours >= 12) ? "pm" : "am";
+            var ampm = "am";
             minutes = formatNumber(minutes);
             seconds = formatNumber(seconds);
             
@@ -172,7 +173,7 @@
 
 			document.getElementById("time").innerText = "{0}:{1}".format(hours, minutes);
             document.getElementById("seconds").innerText = ":{0}".format(seconds);
-            document.getElementById("am-pm").innerText = " {0}".format(ampm);
+            document.getElementById(ampm).innerText = " {0}".format(ampm);
 		}
 
 		function calculateDate() {
@@ -204,7 +205,8 @@
 			}
 
 			document.getElementById("month").innerText = month;
-			document.getElementById("month-text").innerText = "{0}{1}".format(day, ending);
+			document.getElementById("month-text").innerText = day;
+            document.getElementById("month-end").innerText = ending;
 			document.getElementById("year").innerText = " {0}/{1}/{2}".format(day,monthint,year);
 			document.getElementById("literal-day").innerText = "{0},".format(literalDay);
 		}
